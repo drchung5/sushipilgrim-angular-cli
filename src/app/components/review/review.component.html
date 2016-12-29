@@ -1,0 +1,41 @@
+<article>
+
+  <header>
+    <span class="restaurant-name">{{review.name}}</span><br>
+    {{review.street}}<br>
+    {{review.city}}, {{review.state}}&nbsp;&nbsp;{{review.zip}}
+  </header>
+
+  <section>
+    <template ngFor let-paragraph [ngForOf]="review.text" let-i="index">
+
+      <p *ngIf="i === 0 || expanded">
+        <!--innerHTML syntax used for binding to support-->
+        <!--rendering of HTML tags in bound text-->
+        <!-- TODO: research what tags can be included -->
+        <span [innerHTML]="paragraph"></span>
+      </p>
+
+      <template [ngIf]="i === 0 && !expanded">
+        <div class="continue" (click)="more()">
+          <span>{{review.name}} full review &raquo;</span>
+        </div>
+        <hr class="clear">
+      </template>
+
+      <div *ngIf="i === (review.text.length-1) && expanded" class="continue" (click)="more()">
+        <span>&laquo; Minimize the review</span>
+      </div>
+
+    </template>
+  </section>
+
+  <!--Only display footer if review is expanded-->
+  <footer class="clear" *ngIf="expanded">
+    {{review.name}} &mdash; {{review.rating}} rice bowls
+      <div class="rice-bowls">
+        <img *ngFor="let bowl of riceBowls; let i = index" [src]="bowl?colorBowl:greyBowl"/>
+      </div>
+  </footer>
+
+</article>

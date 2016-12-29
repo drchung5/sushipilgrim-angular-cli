@@ -1,0 +1,39 @@
+section p:first-child {
+  margin-top: 1em;
+}
+
+.continue {
+  color: red;
+  cursor: pointer;
+}
+
+.continue:hover {
+  font-style: italic;
+}
+
+.continue > span {
+  float: right;
+}
+
+footer {
+  margin-top: 0.5em;
+  padding: .5em;
+  border: 1px black solid;
+  background-color: lightgray;
+  font-style: italic;
+  margin-bottom: 1.5em;
+}
+
+.clear {
+  clear: both;
+}
+
+.rice-bowls {
+  display: inline-block;
+  float: right;
+}
+
+.restaurant-name {
+  font-weight: 900;
+  font-size: 1.2em;
+}

@@ -1,0 +1,16 @@
+<nav>
+
+  <ul *ngFor="let state of states">
+
+    <li *ngIf="state.hasReviews">
+      <div class="selected">{{selectedState===state.abbr?'•':''}}</div>
+      <span id="state.abbr" class="link" (click)="clicked(state.abbr)">{{state.name}}</span>
+    </li>
+
+    <li *ngIf="!state.hasReviews">
+      <div class="selected"></div>{{state.name}}
+    </li>
+
+  </ul>
+
+</nav>
