@@ -41,7 +41,10 @@ export class StateListComponent implements OnInit {
     // selected$ is an Observable so the subscribe
     // function watches for changes
     selectionService.selected$.subscribe(
-      state => this.selectedState = state
+      state => {
+        this.selectedState = state
+        console.log(`state-list observes: ${state}`)
+      }
     )
   }
 

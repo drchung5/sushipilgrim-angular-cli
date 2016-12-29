@@ -34,17 +34,40 @@ export class ReviewListComponent {
 
   ngOnInit() {
 
-    this.selectedState = this.activatedRoute.snapshot.params['state']
+    console.log('ReviewListComponent: ngOnInit')
 
-    if ( !this.selectedState ) {
+    // since ngOnInit is only called once, subscribe to changes in the URL parameter
+    this.activatedRoute.params.subscribe((params)=>{
+
+      this.selectedState = params['state']
+
+      if ( this.selectedState === undefined ) {
+        this.selectedState = 'ALL'
+      }
+
+      console.log(`Subscribed: ${this.selectedState}`)
+
+      this.selectionService.setState(this.selectedState)
+      this.reviewList = this.reviewDataService.getReviews(this.selectedState)
+      window.scrollTo(0,0)
+
+    })
+
+  }
+
+  onChangeUrlParams( params ) {
+
+    this.selectedState = params['state']
+
+    if ( this.selectedState === undefined ) {
       this.selectedState = 'ALL'
     }
 
+    console.log(`Subscribed: ${this.selectedState}`)
+
     this.selectionService.setState(this.selectedState)
-
     this.reviewList = this.reviewDataService.getReviews(this.selectedState)
-
-    console.log(`State: ${this.selectedState}`)
+    window.scrollTo(0,0)
 
   }
 

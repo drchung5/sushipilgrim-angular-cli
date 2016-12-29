@@ -14,8 +14,16 @@ import { ReviewDataService } from './services/review-data/review-data.service'
     BrowserModule,
     SushipilgrimRouterModule
   ],
-  declarations: [ PageMainComponent, StateListComponent, ReviewComponent, ReviewListComponent ],
+
+  declarations: [
+    PageMainComponent,
+    StateListComponent,
+    ReviewComponent,
+    ReviewListComponent
+  ],
+
   providers:    [ ReviewDataService ],
+
   bootstrap:    [ PageMainComponent ]
 })
 
