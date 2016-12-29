@@ -16,7 +16,7 @@ export class Review {
       o['city'],
       o['state'],
       o['zip'],
-      o['phoine'],
+      o['phone'],
       o['webUrl'],
       o['mapUrl'],
       o['text'],

@@ -69,12 +69,16 @@ export class StateListComponent implements OnInit {
 
   // TODO this method is broken-the URL changes in the
   //      location bar but the page content does not
+  //
+  //      from url localhost:4200 (displays all reviews) click
+  //      on CA, IA, or ND and app navigates!!!
+
   clicked(state: string) {
 
     // only follow the link if the selected
     // state is different than the current state
     if( this.selectedState !== state ) {
-      this.router.navigateByUrl(`/${state}`)
+      this.router.navigateByUrl(`${state}`)
         .then(
           ()=>console.log(`Navigated to ${state}`),
           ()=>console.log('Navigation failed'))

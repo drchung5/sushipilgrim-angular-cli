@@ -1,4 +1,3 @@
-// TODO build test
 import { TestBed, inject } from '@angular/core/testing'
 
 import { ReviewDataService } from './review-data.service'
@@ -6,9 +5,9 @@ import { ReviewDataService } from './review-data.service'
 describe( 'Review Data Service', () => {
 
   beforeEach( () => {
-   TestBed.configureTestingModule({
-     providers: [ ReviewDataService ]
-   })
+    TestBed.configureTestingModule({
+      providers: [ ReviewDataService ]
+    })
   })
 
   it( 'Should return reviews',
