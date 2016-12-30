@@ -43,7 +43,17 @@ export class ReviewDataService {
   }
 
   getReviewById( id: number ) : Review {
-    return this.reviews[1];
+
+    let requestedReview: Review = null
+
+    for (let review of this.reviews) {
+      if( review.id === id ) {
+        requestedReview = review
+      }
+    }
+
+    return requestedReview
+
   }
 
   getStatesWithReviews() : string[] {
