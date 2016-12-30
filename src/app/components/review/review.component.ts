@@ -24,7 +24,9 @@ export class ReviewComponent implements OnInit {
 
   @Input() review: Review
 
-  // this array allows the template to display ricebowls based on the rating
+  // this array allows the template to display ricebowls based on
+  // the rating - we use it because templates can only do 'for each'
+  // loops not simple 'for' loops
   riceBowls: Array<Boolean> = new Array<Boolean>();
 
   colorBowl: string = "images/ricebowl.png";
@@ -37,7 +39,7 @@ export class ReviewComponent implements OnInit {
   ngOnInit() {
 
     // configure the ricebowl array for the rating
-    for( let i = 0; i < 4; i++ ) {
+    for( let i = 0; i < 5; i++ ) {
       this.riceBowls.push(i>=(Review.MAX_RATING-this.review.rating)?true:false)
     }
 

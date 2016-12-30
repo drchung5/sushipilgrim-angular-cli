@@ -2,7 +2,7 @@
 
 export class Review {
 
-  public static MAX_RATING = 4
+  public static MAX_RATING = 5
 
   static getReviewFromJSON( json : string ) : Review {
 
