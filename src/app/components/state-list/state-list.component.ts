@@ -8,12 +8,6 @@ class StateInfo {
   constructor( public name: string, public abbr: string, public hasReviews: boolean ) {}
 }
 
-// TODO: This component needs to be reworked so it doesn't flash
-//       The states don't change and neither should the fact that
-//       Some have reviews. The only thing that should change is
-//       The selection bullet. That should be a style change not
-//       structural change
-
 @Component({
   selector: 'state-list',
 
@@ -52,29 +46,31 @@ export class StateListComponent implements OnInit {
 
     console.log(`State: ${this.selectedState}`)
 
-    this.statesWithReviews = this.reviewDataService.getStatesWithReviews()
+    this.reviewDataService.getStatesWithReviews().then(
+      statesWithReviews => {
 
-    // since 'All Reviews' is not a state we
-    // will treat it as a special case
-    if (this.statesWithReviews.length) {
-      this.states[ 0 ].hasReviews = true
-    }
+        this.statesWithReviews = statesWithReviews
 
-    // TODO: this is a very inefficient algorithm
-    for( let state of this.states ) {
+        // since 'All Reviews' is not a state we
+        // will treat it as a special case
+        if (this.statesWithReviews.length) {
+          this.states[ 0 ].hasReviews = true
+        }
 
-      if( this.statesWithReviews.indexOf(state.abbr) !== -1 ) {
-        state.hasReviews = true
+        // TODO: this is a very inefficient algorithm
+        for( let state of this.states ) {
+
+          if( this.statesWithReviews.indexOf(state.abbr) !== -1 ) {
+            state.hasReviews = true
+          }
+
+        }
+
+
       }
+    )
 
-    }
   }
-
-  // TODO this method is broken-the URL changes in the
-  //      location bar but the page content does not
-  //
-  //      from url localhost:4200 (displays all reviews) click
-  //      on CA, IA, or ND and app navigates!!!
 
   clicked(state: string) {
 

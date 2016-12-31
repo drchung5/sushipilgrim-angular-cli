@@ -6,67 +6,70 @@ export class ReviewDataService {
 
   DEFAULT_REVIEWS_PER_PAGE :number = 3
 
-  // getRecentReviews( count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Array<Review> {
-  //   let sorted: Array<Review> = this.reviews.sort( function( review1: Review, review2: Review){
-  //     return review2.reviewDate.getTime() - review1.reviewDate.getTime()
-  //   })
-  //
-  //   return sorted.slice( 0, ((sorted.length<count)?sorted.length:count) )
-  // }
-  //
-  // getReviewsByState( stateAbbreviation: string ) : Array<Review> {
-  //   return null
-  // }
+  getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<Array<Review>> {
 
-  getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Array<Review> {
+    return new Promise<Array<Review>>( resolve => {
 
-    let returnValue: Array<Review> = null;
 
-    console.log(`State: ${state}`)
+      let requestedReviews: Array<Review> = null;
 
-    if( state === 'ALL' ) {
+      console.log(`State: ${state}`)
 
-      // sort the reviews by date
-      let sorted: Array<Review> = this.reviews.sort(function ( review1: Review, review2: Review ) {
-        return review2.reviewDate.getTime() - review1.reviewDate.getTime()
-      })
+      if( state === 'ALL' ) {
 
-      returnValue = sorted.slice(0, ((sorted.length < count) ? sorted.length : count))
+        // sort the requestedReviews by date
+        let sorted: Array<Review> = this.reviews.sort(function ( review1: Review, review2: Review ) {
+          return review2.reviewDate.getTime() - review1.reviewDate.getTime()
+        })
 
-    } else {
+        requestedReviews = sorted.slice(0, ((sorted.length < count) ? sorted.length : count))
 
-      returnValue = this.reviews.filter(review=>review.state===state)
+      } else {
 
-    }
+        requestedReviews = this.reviews.filter(review=>review.state===state)
 
-    return returnValue;
-  }
-
-  getReviewById( id: number ) : Review {
-
-    let requestedReview: Review = null
-
-    for (let review of this.reviews) {
-      if( review.id === id ) {
-        requestedReview = review
       }
-    }
 
-    return requestedReview
+      resolve( requestedReviews )
+
+    });
 
   }
 
-  getStatesWithReviews() : string[] {
+  getReviewById( id: number ) : Promise<Review> {
 
-    let reviewStates: string[] = []
+    return new Promise<Review>( resolve => {
 
-    for( let review of this.reviews) {
-      if( reviewStates.indexOf( review.state ) === -1 ) {
-        reviewStates.push(review.state)
+      let requestedReview: Review = null
+
+      for (let review of this.reviews) {
+        if( review.id === id ) {
+          requestedReview = review
+        }
       }
-    }
 
-    return reviewStates;
+      resolve( requestedReview )
+
+    })
+
+  }
+
+  getStatesWithReviews() : Promise<string[]> {
+
+    return new Promise<string[]>(resolve=>{
+
+      let reviewStates: string[] = []
+
+      for( let review of this.reviews) {
+        if( reviewStates.indexOf( review.state ) === -1 ) {
+          reviewStates.push(review.state)
+        }
+      }
+
+      resolve( reviewStates )
+
+    })
+
   }
 
   reviews: Array<Review> = [

@@ -48,7 +48,10 @@ export class ReviewListComponent {
       console.log(`Subscribed: ${this.selectedState}`)
 
       this.selectionService.setState(this.selectedState)
-      this.reviewList = this.reviewDataService.getReviews(this.selectedState)
+
+      this.reviewDataService.getReviews(this.selectedState).then(
+        reviews => this.reviewList = reviews,
+      )
 
       // scroll to the top of the page when the list changes
       window.scrollTo(0,0)
