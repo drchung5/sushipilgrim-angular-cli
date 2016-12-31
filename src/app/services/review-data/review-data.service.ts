@@ -29,9 +29,8 @@ export class ReviewDataService {
 
       }
 
-      setTimeout( () => resolve( requestedReviews ), 6000)
+      resolve( requestedReviews )
 
-      // resolve( requestedReviews )
     });
 
   }
