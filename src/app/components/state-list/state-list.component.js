@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var review_data_service_1 = require('../../services/review-data/review-data.service');
-var selection_service_1 = require("../../services/selection/selection.service");
+var selection_service_1 = require("../../services/selection/state-selection.service.ts");
 var StateInfo = (function () {
     function StateInfo(name, abbr, hasReviews) {
         this.name = name;

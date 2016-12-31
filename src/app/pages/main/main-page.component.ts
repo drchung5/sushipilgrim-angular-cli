@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 
-import { StateSelectionService }  from '../../services/selection/selection.service'
+import { StateSelectionService }  from '../../services/selection/state-selection.service'
 
 @Component({
 

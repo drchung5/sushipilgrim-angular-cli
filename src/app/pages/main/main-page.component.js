@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var selection_service_1 = require('../../services/selection/selection.service');
+var selection_service_1 = require('../../services/selection/state-selection.service.ts');
 var PageMainComponent = (function () {
     // TODO: define 'ALL' as a constant
     // selectedReviews: string = 'ALL'

@@ -28,4 +28,4 @@ var StateSelectionService = (function () {
     return StateSelectionService;
 }());
 exports.StateSelectionService = StateSelectionService;
-//# sourceMappingURL=selection.service.js.map
+//# sourceMappingURL=state-selection.service.jsice.js.map

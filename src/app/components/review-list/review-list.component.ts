@@ -4,7 +4,7 @@ import { ActivatedRoute }    from '@angular/router'
 import { Review } from "../../value-objects/review.class";
 
 import { ReviewDataService } from '../../services/review-data/review-data.service'
-import { StateSelectionService }  from '../../services/selection/selection.service'
+import { StateSelectionService }  from '../../services/selection/state-selection.service'
 
 // This component is just a container for reviews
 // and will be used as the target component for

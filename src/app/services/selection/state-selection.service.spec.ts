@@ -1,5 +1,5 @@
 import { TestBed, inject  } from '@angular/core/testing'
-import { StateSelectionService } from './selection.service'
+import { StateSelectionService } from './state-selection.service'
 
 describe('StateSelectionService', ()=>{
 

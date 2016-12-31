@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var review_data_service_1 = require('../../services/review-data/review-data.service');
-var selection_service_1 = require('../../services/selection/selection.service');
+var selection_service_1 = require('../../services/selection/state-selection.service.ts');
 // This component is just a container for reviews
 // and will be used as the target component for
 // routing.
