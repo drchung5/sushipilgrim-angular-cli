@@ -10,7 +10,6 @@ export class ReviewDataService {
 
     return new Promise<Array<Review>>( resolve => {
 
-
       let requestedReviews: Array<Review> = null;
 
       console.log(`State: ${state}`)
@@ -30,8 +29,9 @@ export class ReviewDataService {
 
       }
 
-      resolve( requestedReviews )
+      setTimeout( () => resolve( requestedReviews ), 6000)
 
+      // resolve( requestedReviews )
     });
 
   }
