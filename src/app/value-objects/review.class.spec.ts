@@ -7,6 +7,8 @@ describe( 'Review Data Service', () => {
 
     let date: Date = new Date();
 
+    console.log(`spec: ${date.getTime()}`)
+
     let o = {
       id: 1234,
       reviewDate: date,
@@ -24,8 +26,10 @@ describe( 'Review Data Service', () => {
 
     let review: Review = Review.getReviewFromJSON( JSON.stringify(o) )
 
+    console.log(`review: ${review.reviewDate.getTime()}`)
+
     expect(review.id).toBe(1234)
-    // expect(review.reviewDate).toBe(date)
+    expect(review.reviewDate.getTime()).toBe(date.getTime())
     expect(review.name).toBe('name')
     expect(review.street).toBe('street')
     expect(review.city).toBe('city')
