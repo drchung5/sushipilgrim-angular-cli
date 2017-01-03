@@ -8,8 +8,8 @@
 /node_modules
 
 # this project uses typescript so ignore javascript
-app/*.js
-app/*.,ap
+src/app/*.js
+src/app/*.,ap
 
 # IDEs and editors
 /.idea
