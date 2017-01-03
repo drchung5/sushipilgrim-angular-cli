@@ -2,12 +2,14 @@
 
 # static content directory
 /dist
+/tmp
 
 # dependencies
 /node_modules
 
 # this project uses typescript so ignore javascript
-*.js
+app/*.js
+app/*.,ap
 
 # IDEs and editors
 /.idea
@@ -23,6 +25,10 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# e2e
+/e2e/*.js
+/e2e/*.map
 
 #System Files
 .DS_Store
