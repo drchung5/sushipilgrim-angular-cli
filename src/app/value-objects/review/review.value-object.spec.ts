@@ -1,5 +1,5 @@
-import { Review } from '../../../../../NodeJS/sushipilgrim-server/value-objects/review.class'
-import {ReviewDataService} from "../services/review-data/review-data.service";
+import { Review } from './review.value-object'
+import {ReviewDataService} from "../../services/review-data/review-data.service";
 
 describe( 'Review Data Service', () => {
 
@@ -7,11 +7,11 @@ describe( 'Review Data Service', () => {
 
     let date: Date = new Date();
 
-    console.log(`spec: ${date.getTime()}`)
+    console.log(`spec: ${date.toISOString()}`)
 
     let o = {
       id: 1234,
-      reviewDate: date,
+      reviewDate: date.toISOString(),
       name: 'name',
       street: 'street',
       city: 'city',
@@ -26,10 +26,9 @@ describe( 'Review Data Service', () => {
 
     let review: Review = Review.getReviewFromJSON( JSON.stringify(o) )
 
-    console.log(`review: ${review.reviewDate.getTime()}`)
 
     expect(review.id).toBe(1234)
-    expect(review.reviewDate.getTime()).toBe(date.getTime())
+    expect(review.reviewDate).toBe(date.toISOString())
     expect(review.name).toBe('name')
     expect(review.street).toBe('street')
     expect(review.city).toBe('city')

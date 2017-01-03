@@ -12,7 +12,7 @@ describe( 'Review Data Service', () => {
   it('Should return reviews', done => {
     inject([ ReviewDataService ], reviewDataService => {
       reviewDataService.getReviews('ALL').then( result => {
-        expect(result.length).toBeGreaterThan(1)
+        expect(result.reviews.length).toBeGreaterThan(1)
         done()
       })
     })() // inject returns a function: call it here
@@ -21,7 +21,7 @@ describe( 'Review Data Service', () => {
   it('Should not return a review for New Mexico', done => {
     inject([ ReviewDataService ], reviewDataService => {
       reviewDataService.getReviews('NM').then( result => {
-        expect(result.length).toBe(0)
+        expect(result.reviews.length).toBe(0)
         done()
       })
     })() // inject returns a function: call it here

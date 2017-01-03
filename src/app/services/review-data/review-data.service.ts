@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core'
-import { Review } from '../../value-objects/review.class'
+import { Review } from '../../value-objects/review/review.value-object'
+import { ReviewData } from '../../value-objects/review-data/review-data.value-object'
 
 @Injectable()
 export class ReviewDataService {
 
   DEFAULT_REVIEWS_PER_PAGE :number = 3
 
-  getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<Array<Review>> {
+  getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<ReviewData> {
 
-    return new Promise<Array<Review>>( resolve => {
+    return new Promise<ReviewData>( resolve => {
 
       let requestedReviews: Array<Review> = null;
 
@@ -18,7 +19,7 @@ export class ReviewDataService {
 
         // sort the requestedReviews by date
         let sorted: Array<Review> = this.reviews.sort(function ( review1: Review, review2: Review ) {
-          return review2.reviewDate.getTime() - review1.reviewDate.getTime()
+          return (new Date(review2.reviewDate)).getTime() - (new Date(review1.reviewDate)).getTime()
         })
 
         requestedReviews = sorted.slice(0, ((sorted.length < count) ? sorted.length : count))
@@ -29,7 +30,14 @@ export class ReviewDataService {
 
       }
 
-      resolve( requestedReviews )
+      resolve(
+        new ReviewData(
+          requestedReviews.length,
+          0,
+          false,
+          requestedReviews
+        )
+      )
 
     });
 
@@ -75,7 +83,7 @@ export class ReviewDataService {
 
     new Review(
       1001,
-      new Date(2004, 5, 16),
+      "2004-05-16T02:31:03.078Z",
       "Sushi House",
       "123 Edgewood Rd",
       "Cedar Rapids",
@@ -93,7 +101,7 @@ export class ReviewDataService {
 
     new Review(
       1002,
-      new Date(2005, 9, 26),
+      "2005-09-26T02:31:03.078Z",
       "Maki Sushi ",
       "123 Edgewood Rd",
       "Des Moines",
@@ -111,7 +119,7 @@ export class ReviewDataService {
 
     new Review(
       1003,
-      new Date(2002, 1, 4),
+      "2002-01-04T02:31:03.078Z",
       "Takanama",
       "123 Edgewood Rd",
       "Des Moines",
@@ -129,7 +137,7 @@ export class ReviewDataService {
 
     new Review(
       1005,
-      new Date(2006, 7, 18),
+      "2006-07-18T02:31:03.078Z",
       "Oyama",
       "123 Edgewood Rd",
       "Cedar Rapids",
@@ -147,7 +155,7 @@ export class ReviewDataService {
 
     new Review(
       1006,
-      new Date(2004, 4, 29),
+      "2004-04-29T02:31:03.078Z",
       "NewBo Sushi",
       "123 Edgewood Rd",
       "Cedar Rapids",
@@ -165,7 +173,7 @@ export class ReviewDataService {
 
     new Review(
       1007,
-      new Date(2014, 5, 16),
+      "2014-05-16T02:31:03.078Z",
       "Wasabi",
       "123 Edgewood Rd",
       "Cedar Rapids",
@@ -183,7 +191,7 @@ export class ReviewDataService {
 
     new Review(
       1008,
-      new Date(2016, 5, 1),
+      "2006-05-16T02:31:03.078Z",
       "Fuki Sushi",
       "123 Edgewood Rd",
       "Palo Alto",
@@ -201,7 +209,7 @@ export class ReviewDataService {
 
     new Review(
       1009,
-      new Date(2002, 3, 12),
+      "2002-03-12T02:31:03.078Z",
       "Joe's Bait Shop",
       "123 Edgewood Rd",
       "Fargo",

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute }    from '@angular/router'
 
-import { Review } from "../../value-objects/review.class";
+import { Review } from "../../value-objects/review/review.value-object";
+import { ReviewData } from "../../value-objects/review-data/review-data.value-object";
 
 import { ReviewDataService } from '../../services/review-data/review-data.service'
 import { StateSelectionService }  from '../../services/selection/state-selection.service'
@@ -13,9 +14,11 @@ import { StateSelectionService }  from '../../services/selection/state-selection
 
   selector: 'review-list',
 
-  template: `
-          <review *ngFor="let review of reviewList" [review]="review"></review>
-  `,
+  moduleId: "module.id",
+
+  templateUrl: './review-list.component.html',
+
+  styleUrls: ['./review-list.component.css'],
 
   providers: [ ReviewDataService ]
 
@@ -25,7 +28,10 @@ export class ReviewListComponent {
 
   selectedState: string
 
-  reviewList: Array<Review>
+  reviews: Array<Review>
+  page: number
+  hasMoreReviews: boolean
+
 
   constructor(
     private reviewDataService: ReviewDataService,
@@ -50,7 +56,11 @@ export class ReviewListComponent {
       this.selectionService.setState(this.selectedState)
 
       this.reviewDataService.getReviews(this.selectedState).then(
-        reviews => this.reviewList = reviews,
+        data => {
+          this.reviews = data.reviews
+          this.page = data.page
+          this.hasMoreReviews = data.hasMorePages
+        }
       )
 
       // scroll to the top of the page when the list changes

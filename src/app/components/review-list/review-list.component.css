@@ -1,0 +1,24 @@
+nav.prev {
+  float: left;
+}
+
+nav.next {
+  float: right;
+}
+
+.disabled {
+  color: #dddddd;
+}
+
+header {
+  margin-bottom: 1em;
+}
+
+header,
+footer {
+  height: 2.4em;
+  background-color: #f8f8f8;
+  padding: .5em 0.4em 0em 0.4em;
+  font-weight: 900;
+  font-size: .7em;
+}
