@@ -6,9 +6,9 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../../NodeJS/sushipilgrim-server/document_root",
       "assets": [
-        "assets",
+        "images",
         "favicon.ico"
       ],
       "index": "index.html",

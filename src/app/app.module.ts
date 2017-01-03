@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
+import { HttpModule }    from '@angular/http'
 
 import { SushipilgrimRouterModule } from './app.routes'
 
@@ -12,7 +13,8 @@ import { ReviewDataService } from './services/review-data/review-data.service'
 @NgModule({
   imports:      [
     BrowserModule,
-    SushipilgrimRouterModule
+    SushipilgrimRouterModule,
+    HttpModule
   ],
 
   declarations: [

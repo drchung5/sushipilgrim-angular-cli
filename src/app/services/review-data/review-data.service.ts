@@ -1,45 +1,59 @@
 import { Injectable } from '@angular/core'
+import { Http } from '@angular/http'
+
 import { Review } from '../../value-objects/review/review.value-object'
 import { ReviewData } from '../../value-objects/review-data/review-data.value-object'
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class ReviewDataService {
 
   DEFAULT_REVIEWS_PER_PAGE :number = 3
 
+  constructor( private http: Http ) {
+
+  }
+
   getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<ReviewData> {
 
-    return new Promise<ReviewData>( resolve => {
+    return this.http.get(`/api/reviews/${state}`)
+      .map( response => response.json() as ReviewData )
+      .toPromise()
 
-      let requestedReviews: Array<Review> = null;
-
-      console.log(`State: ${state}`)
-
-      if( state === 'ALL' ) {
-
-        // sort the requestedReviews by date
-        let sorted: Array<Review> = this.reviews.sort(function ( review1: Review, review2: Review ) {
-          return (new Date(review2.reviewDate)).getTime() - (new Date(review1.reviewDate)).getTime()
-        })
-
-        requestedReviews = sorted.slice(0, ((sorted.length < count) ? sorted.length : count))
-
-      } else {
-
-        requestedReviews = this.reviews.filter(review=>review.state===state)
-
-      }
-
-      resolve(
-        new ReviewData(
-          requestedReviews.length,
-          0,
-          false,
-          requestedReviews
-        )
-      )
-
-    });
+    // return new Promise<ReviewData>( resolve => {
+    //
+    //   let requestedReviews: Array<Review> = null;
+    //
+    //   console.log(`State: ${state}`)
+    //
+    //   if( state === 'ALL' ) {
+    //
+    //     // sort the requestedReviews by date
+    //     let sorted: Array<Review> = this.reviews.sort(function ( review1: Review, review2: Review ) {
+    //       return (new Date(review2.reviewDate)).getTime() - (new Date(review1.reviewDate)).getTime()
+    //     })
+    //
+    //     requestedReviews = sorted.slice(0, ((sorted.length < count) ? sorted.length : count))
+    //
+    //   } else {
+    //
+    //     requestedReviews = this.reviews.filter(review=>review.state===state)
+    //
+    //   }
+    //
+    //   resolve(
+    //     new ReviewData(
+    //       requestedReviews.length,
+    //       0,
+    //       false,
+    //       requestedReviews
+    //     )
+    //   )
+    //
+    // });
 
   }
 
@@ -63,19 +77,25 @@ export class ReviewDataService {
 
   getStatesWithReviews() : Promise<string[]> {
 
-    return new Promise<string[]>(resolve=>{
+    return this.http.get('/api/statesWithReviews')
+      .map( response => response.json() as Array<string> )
+      .toPromise()
 
-      let reviewStates: string[] = []
-
-      for( let review of this.reviews) {
-        if( reviewStates.indexOf( review.state ) === -1 ) {
-          reviewStates.push(review.state)
-        }
-      }
-
-      resolve( reviewStates )
-
-    })
+    // MOCK data
+    //
+    // return new Promise<string[]>(resolve=>{
+    //
+    //   let reviewStates: string[] = []
+    //
+    //   for( let review of this.reviews) {
+    //     if( reviewStates.indexOf( review.state ) === -1 ) {
+    //       reviewStates.push(review.state)
+    //     }
+    //   }
+    //
+    //   resolve( reviewStates )
+    //
+    // })
 
   }
 
