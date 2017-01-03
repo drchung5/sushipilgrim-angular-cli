@@ -1,4 +1,4 @@
-import { Review } from './review.class'
+import { Review } from '../../../../../NodeJS/sushipilgrim-server/value-objects/review.class'
 import {ReviewDataService} from "../services/review-data/review-data.service";
 
 describe( 'Review Data Service', () => {

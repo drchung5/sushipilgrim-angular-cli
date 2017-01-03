@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var review_class_1 = require('../../value-objects/review.class');
+var review_class_1 = require('../../../../../../NodeJS/sushipilgrim-server/value-objects/review.class.ts');
 var review_data_service_1 = require('../../services/review-data/review-data.service');
 // This component displays a Review. It handles both the
 // minimized and expanded (accordian) format of the review

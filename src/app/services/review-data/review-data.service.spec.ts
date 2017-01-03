@@ -45,5 +45,5 @@ describe( 'Review Data Service', () => {
     })() // inject returns a function: call it here
   })
 
-}
+})
 

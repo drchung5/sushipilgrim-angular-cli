@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var review_class_1 = require('../../value-objects/review.class');
+var review_class_1 = require('../../../../../../NodeJS/sushipilgrim-server/value-objects/review.class.ts');
 var ReviewDataService = (function () {
     function ReviewDataService() {
         this.DEFAULT_REVIEWS_PER_PAGE = 3;
