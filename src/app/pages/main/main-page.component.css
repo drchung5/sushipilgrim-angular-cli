@@ -1,0 +1,17 @@
+header {
+  margin-bottom: 0.5em;
+}
+
+aside {
+  width: 10em;
+  float: right;
+  padding: 0.6em;
+  background-color: #f8f8f8;
+  font-size: 0.9em;
+}
+
+section {
+  width: auto;
+  overflow: hidden;
+  padding-right: 1em;
+}

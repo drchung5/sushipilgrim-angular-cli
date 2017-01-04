@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { ActivatedRoute }    from '@angular/router'
 
 import { StateSelectionService }  from '../../services/selection/state-selection.service'
 
@@ -6,40 +7,11 @@ import { StateSelectionService }  from '../../services/selection/state-selection
 
   selector: 'page',
 
-  template: `
+  moduleId: "module.id",
 
-    <aside>
-      <header>Reviews</header>
-      <state-list></state-list>
-    </aside>
-    
-    <section>
-      <router-outlet></router-outlet>
-    </section>
+  templateUrl: './main-page.component.html',
 
-  `,
-
-  styles: [`
-
-    header {
-      margin-bottom: 0.5em;
-    }
-
-    aside { 
-      width: 10em;
-      float: right;
-      padding: 0.6em;
-      background-color: #f8f8f8;
-      font-size: 0.9em;
-     }
-
-    section {
-      width: auto;
-      overflow: hidden;
-      padding-right: 1em;
-    }
-     
-  `],
+  styleUrls: ['./main-page.component.css'],
 
   providers: [ StateSelectionService ]
 
@@ -50,6 +22,8 @@ export class PageMainComponent {
   // TODO: define 'ALL' as a constant
   // selectedReviews: string = 'ALL'
 
-  constructor(private selectionService: StateSelectionService) {}
+  constructor(
+    private selectionService: StateSelectionService) {}
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute }    from '@angular/router'
+import {ActivatedRoute, Router, UrlSegment}    from '@angular/router'
 
 import { Review } from "../../value-objects/review/review.value-object";
 import { ReviewData } from "../../value-objects/review-data/review-data.value-object";
@@ -32,11 +32,14 @@ export class ReviewListComponent {
   page: number
   hasMorePages: boolean
   enableAccordian: boolean = true
+  path: Array<string> = [""]
+
 
   constructor(
     private reviewDataService: ReviewDataService,
     private selectionService: StateSelectionService,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {}
 
   ngOnInit() {
 
@@ -61,7 +64,8 @@ export class ReviewListComponent {
           this.page = data.page
           this.hasMorePages = data.hasMorePages
           this.enableAccordian = (this.reviews.length>1)
-          console.log(`ReviewListComponent enableAccordian: ${this.enableAccordian}`)
+
+          this.updateBreadcrumbs()
         }
       )
 
@@ -72,7 +76,52 @@ export class ReviewListComponent {
 
   }
 
+  updateBreadcrumbs() : void {
+
+    this.path= ["All Reviews"]
+
+    let url: string = this.router.url
+
+    if( url === '/' || url === "/ALL") {
+
+    } else {
+
+      this.path.push(this.reviews[0].state)
+
+      if ( /^\/\d+$/.test(url)  ) {
+
+        this.path.push(this.reviews[0].name)
+
+      }
+
+    }
+
+  }
+
+  doBreadcrumbNav( pathSegment: number ): void {
+
+    // If the user clicks on the current breadcrumb
+    // do nothing
+    if( pathSegment < this.path.length-1 ) {
+
+      // set the default to all
+      let url: string = "ALL"
+
+      // if the user clicks on the 2nd (#1) item
+      // make it the path
+      if( pathSegment === 1 ) {
+        url = this.path[1];
+      }
+
+      this.router.navigateByUrl(url)
+        .then()
+    }
+
+  }
+
 }
+
+
 
 
 

@@ -1,6 +1,7 @@
-<header *ngIf="page !== 0 || hasMorePages">
-  <nav *ngIf="page !== 0" class="prev">&laquo; Prev Page</nav>
-  <nav *ngIf="hasMorePages" class="next"><a href="#">Next Page &raquo;</a></nav>
+<header>
+    <div class="sushi-breadcrumb"
+         *ngFor="let pathSegment of path; let i = index"
+         (click)="doBreadcrumbNav(i)">{{pathSegment}}</div>
 </header>
 
 <review *ngFor="let review of reviews" [review]="review" [enableAccordian]="enableAccordian"></review>

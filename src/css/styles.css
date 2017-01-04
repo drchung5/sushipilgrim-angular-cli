@@ -46,9 +46,6 @@ header>main>h2 {
   background-color: black;
   height: 0.2em;
   border-bottom: 2px #aaaaaa solid;
+  margin-bottom: 0.2em;
 }
 
-/*.restaurant-name {*/
-  /*font-weight: 900;*/
-  /*font-size: 1.2em;*/
-/*}*/

@@ -41,14 +41,10 @@ export class ReviewComponent implements OnInit {
                private router: Router ) {}
 
   ngOnInit() {
-
     // configure the ricebowl array for the rating
     for( let i = 0; i < 5; i++ ) {
       this.riceBowls.push(i>=(Review.MAX_RATING-this.review.rating)?true:false)
     }
-
-    console.log(`ReviewComponent enableAccordian: ${this.enableAccordian}`)
-
   }
 
   showThisReview() {

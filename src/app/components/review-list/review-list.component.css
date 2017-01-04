@@ -15,10 +15,46 @@ header {
 }
 
 header,
-footer {
+footer,
+sushi-breadcrumb {
   height: 2.4em;
+}
+
+header,
+footer {
   background-color: #f8f8f8;
   padding: .5em 0.4em 0em 0.4em;
   font-weight: 900;
   font-size: .7em;
+}
+
+.sushi-breadcrumb {
+  display: inline-block;
+  border-right: 1px gray solid;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.sushi-breadcrumb:hover {
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sushi-breadcrumb:last-of-type {
+  font-style: normal;
+  cursor: default;
+  text-decoration: none;
+}
+
+.prev>a,
+.next>a {
+  color: black;
+}
+
+.prev>a:hover,
+.next>a:hover {
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: underline;
 }
