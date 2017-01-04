@@ -47,6 +47,9 @@ footer {
   text-decoration: none;
 }
 
+/*TODO these styles are for anchors, the prev*/
+/*next links might become spans in the future*/
+
 .prev>a,
 .next>a {
   color: black;
