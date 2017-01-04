@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { Review }            from '../../value-objects/review/review.value-object'
 import { ReviewDataService } from '../../services/review-data/review-data.service'
@@ -24,6 +25,8 @@ export class ReviewComponent implements OnInit {
 
   @Input() review: Review
 
+  @Input() enableAccordian : boolean
+
   // this array allows the template to display ricebowls based on
   // the rating - we use it because templates can only do 'for each'
   // loops not simple 'for' loops
@@ -32,9 +35,10 @@ export class ReviewComponent implements OnInit {
   colorBowl: string = "images/ricebowl.png";
   greyBowl:  string = "images/ricebowl-grey.png";
 
-  expanded: boolean = false
+  expanded: boolean
 
-  constructor( private reviewDataService: ReviewDataService ) {}
+  constructor( private reviewDataService: ReviewDataService,
+               private router: Router ) {}
 
   ngOnInit() {
 
@@ -43,10 +47,16 @@ export class ReviewComponent implements OnInit {
       this.riceBowls.push(i>=(Review.MAX_RATING-this.review.rating)?true:false)
     }
 
+    console.log(`ReviewComponent enableAccordian: ${this.enableAccordian}`)
+
   }
 
+  showThisReview() {
+    this.router.navigateByUrl(`${this.review.id}`)
+      .then()
+  }
+  
   more() {
     this.expanded = !this.expanded
   }
-
 }

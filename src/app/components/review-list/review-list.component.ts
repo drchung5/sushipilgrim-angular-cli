@@ -31,7 +31,7 @@ export class ReviewListComponent {
   reviews: Array<Review>
   page: number
   hasMorePages: boolean
-
+  enableAccordian: boolean = true
 
   constructor(
     private reviewDataService: ReviewDataService,
@@ -60,6 +60,8 @@ export class ReviewListComponent {
           this.reviews = data.reviews
           this.page = data.page
           this.hasMorePages = data.hasMorePages
+          this.enableAccordian = (this.reviews.length>1)
+          console.log(`ReviewListComponent enableAccordian: ${this.enableAccordian}`)
         }
       )
 

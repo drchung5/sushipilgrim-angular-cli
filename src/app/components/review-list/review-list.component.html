@@ -3,7 +3,7 @@
   <nav *ngIf="hasMorePages" class="next"><a href="#">Next Page &raquo;</a></nav>
 </header>
 
-<review *ngFor="let review of reviews" [review]="review"></review>
+<review *ngFor="let review of reviews" [review]="review" [enableAccordian]="enableAccordian"></review>
 
 <footer *ngIf="page !== 0 || hasMorePages">
   <nav *ngIf="page !== 0" class="prev">&laquo; Prev Page</nav>

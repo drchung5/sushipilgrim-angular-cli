@@ -42,3 +42,9 @@ footer {
   font-size: 1.2em;
   color: red;
 }
+
+.restaurant-name:hover {
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: underline;
+}

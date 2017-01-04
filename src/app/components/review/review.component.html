@@ -1,7 +1,7 @@
 <article>
 
   <header>
-    <span class="restaurant-name">{{review.name}}</span><br>
+    <span class="restaurant-name" (click)="showThisReview()">{{review.name}}</span><br>
     {{review.street}}<br>
     {{review.city}}, {{review.state}}&nbsp;&nbsp;{{review.zip}}
   </header>
@@ -9,21 +9,21 @@
   <section>
     <template ngFor let-paragraph [ngForOf]="review.text" let-i="index">
 
-      <p *ngIf="i === 0 || expanded">
+      <p *ngIf="i === 0 || expanded || !enableAccordian">
         <!--innerHTML syntax used for binding to support-->
         <!--rendering of HTML tags in bound text-->
         <!-- TODO: research what tags can be included -->
         <span [innerHTML]="paragraph"></span>
       </p>
 
-      <template [ngIf]="i === 0 && !expanded">
+      <template [ngIf]="i === 0 && !expanded && enableAccordian">
         <div class="continue" (click)="more()">
           <span>{{review.name}} full review &raquo;</span>
         </div>
         <hr class="clear">
       </template>
 
-      <div *ngIf="i === (review.text.length-1) && expanded" class="continue" (click)="more()">
+      <div *ngIf="i === (review.text.length-1) && expanded && enableAccordian" class="continue" (click)="more()">
         <span>&laquo; Minimize the review</span>
       </div>
 
@@ -31,7 +31,7 @@
   </section>
 
   <!--Only display footer if review is expanded-->
-  <footer class="clear" *ngIf="expanded">
+  <footer class="clear" *ngIf="expanded || !enableAccordian">
     {{review.name}} &mdash; {{review.rating}} rice bowl<span *ngIf="review.rating > 1">s</span>
       <div class="rice-bowls">
         <img *ngFor="let bowl of riceBowls; let i = index" [src]="bowl?colorBowl:greyBowl"/>
