@@ -37,7 +37,6 @@ export class StateListComponent implements OnInit {
     selectionService.selected$.subscribe(
       state => {
         this.selectedState = state
-        console.log(`state-list observes: ${state}`)
       }
     )
   }
@@ -78,9 +77,7 @@ export class StateListComponent implements OnInit {
     // state is different than the current state
     if( this.selectedState !== state ) {
       this.router.navigateByUrl(`${state}`)
-        .then(
-          ()=>console.log(`Navigated to ${state}`),
-          ()=>console.log('Navigation failed'))
+        .then()
     }
 
   }

@@ -1,11 +1,11 @@
-<!--<header>-->
-  <!--<nav class="prev disabled">&laquo; Prev Page</nav>-->
-  <!--<nav class="next"><a href="#">Next Page &raquo;</a></nav>-->
-<!--</header>-->
+<header *ngIf="page !== 0 || hasMorePages">
+  <nav *ngIf="page !== 0" class="prev">&laquo; Prev Page</nav>
+  <nav *ngIf="hasMorePages" class="next"><a href="#">Next Page &raquo;</a></nav>
+</header>
 
 <review *ngFor="let review of reviews" [review]="review"></review>
 
-<!--<footer>-->
-  <!--<nav class="prev disabled">&laquo; Prev Page</nav>-->
-  <!--<nav class="next"><a href="#">Next Page &raquo;</a></nav>-->
-<!--</footer>-->
+<footer *ngIf="page !== 0 || hasMorePages">
+  <nav *ngIf="page !== 0" class="prev">&laquo; Prev Page</nav>
+  <nav *ngIf="hasMorePages" class="next"><a href="#">Next Page &raquo;</a></nav>
+</footer>

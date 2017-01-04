@@ -30,7 +30,7 @@ export class ReviewListComponent {
 
   reviews: Array<Review>
   page: number
-  hasMoreReviews: boolean
+  hasMorePages: boolean
 
 
   constructor(
@@ -51,7 +51,7 @@ export class ReviewListComponent {
         this.selectedState = 'ALL'
       }
 
-      console.log(`Subscribed: ${this.selectedState}`)
+      // console.log(`Params: ${this.selectedState}`)
 
       this.selectionService.setState(this.selectedState)
 
@@ -59,7 +59,7 @@ export class ReviewListComponent {
         data => {
           this.reviews = data.reviews
           this.page = data.page
-          this.hasMoreReviews = data.hasMorePages
+          this.hasMorePages = data.hasMorePages
         }
       )
 
