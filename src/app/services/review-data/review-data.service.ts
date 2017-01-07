@@ -17,9 +17,12 @@ export class ReviewDataService {
 
   }
 
-  getReviews( state: string, count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<ReviewData> {
+  getReviews(
+    state: string,
+    page: number = 0,
+    count: number = this.DEFAULT_REVIEWS_PER_PAGE ) : Promise<ReviewData> {
 
-    return this.http.get(`/api/reviews/${state}`)
+    return this.http.get(`/api/reviews/${state}?page=${page}&count=${count}`)
       .map( response => response.json() as ReviewData )
       .toPromise()
 

@@ -1,12 +1,16 @@
 <header>
-    <div class="sushi-breadcrumb"
-         *ngFor="let pathSegment of path; let i = index"
-         (click)="doBreadcrumbNav(i)">{{pathSegment}}</div>
+  <div class="sushi-breadcrumb"
+       *ngFor="let pathSegment of path; let i = index"
+       (click)="doBreadcrumbNav(i)">{{pathSegment}}&nbsp;</div>
 </header>
 
 <review *ngFor="let review of reviews" [review]="review" [enableAccordian]="enableAccordian"></review>
 
-<footer *ngIf="page !== 0 || hasMorePages">
-  <nav *ngIf="page !== 0" class="prev">&laquo; Prev Page</nav>
-  <nav *ngIf="hasMorePages" class="next"><a href="#">Next Page &raquo;</a></nav>
+<footer *ngIf="currentPage != 0 || hasMorePages">
+  <nav *ngIf="currentPage != 0" class="prev">
+    <a href="#" [routerLink]="['/'+selectedState]" [queryParams]={page:currentPage-1}>&laquo; Prev Page</a>
+  </nav>
+  <nav *ngIf="hasMorePages" class="next">
+    <a href="#" [routerLink]="['/'+selectedState]" [queryParams]={page:currentPage+1}>Next Page &raquo;</a>
+  </nav>
 </footer>
