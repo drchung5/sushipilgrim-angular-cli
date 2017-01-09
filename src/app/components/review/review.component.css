@@ -47,3 +47,21 @@ footer {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.sushiFadeLastLine {
+  height: 2.5em;
+  overflow: hidden;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+  .sushiFadeLastLine {
+    height: 4em;
+    overflow: hidden;
+  }
+
+}

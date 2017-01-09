@@ -29,10 +29,17 @@ footer {
 }
 
 .sushi-breadcrumb {
+  float: left;
   display: inline-block;
   border-right: 1px gray solid;
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+
+#hamburger {
+  float: right;
+  width: 1.5em;
+  margin-right: .25em;
 }
 
 .sushi-breadcrumb:hover {
@@ -47,6 +54,8 @@ footer {
   text-decoration: none;
 }
 
+
+
 /*TODO these styles are for anchors, the prev*/
 /*next links might become spans in the future*/
 
@@ -60,4 +69,12 @@ footer {
   font-style: italic;
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  #hamburger {
+    display: none;
+  }
+
+
 }

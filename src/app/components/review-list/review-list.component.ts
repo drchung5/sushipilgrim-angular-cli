@@ -145,6 +145,10 @@ export class ReviewListComponent {
 
   }
 
+  onHamburger() {
+    console.log('hamburger')
+  }
+
 }
 
 

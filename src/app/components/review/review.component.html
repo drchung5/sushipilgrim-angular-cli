@@ -9,11 +9,12 @@
   <section>
     <template ngFor let-paragraph [ngForOf]="review.text" let-i="index">
 
-      <p *ngIf="i === 0 || expanded || !enableAccordian">
-        <!--innerHTML syntax used for binding to support-->
-        <!--rendering of HTML tags in bound text-->
-        <!-- TODO: research what tags can be included -->
-        <span [innerHTML]="paragraph"></span>
+      <!--innerHTML syntax used for binding to support-->
+      <!--rendering of HTML tags in bound text-->
+      <!-- TODO: research what tags can be included -->
+      <p *ngIf="i === 0 || expanded || !enableAccordian"
+         [innerHTML]="paragraph"
+         [ngClass]="{sushiFadeLastLine:i === 0 && !expanded && enableAccordian}">
       </p>
 
       <template [ngIf]="i === 0 && !expanded && enableAccordian">

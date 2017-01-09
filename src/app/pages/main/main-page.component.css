@@ -2,16 +2,19 @@ header {
   margin-bottom: 0.5em;
 }
 
-aside {
-  width: 10em;
-  float: right;
-  padding: 0.6em;
-  background-color: #f8f8f8;
-  font-size: 0.9em;
+#state-list-container {
+  display: none;
 }
 
-section {
-  width: auto;
-  overflow: hidden;
-  padding-right: 1em;
+/*section {*/
+  /*width: auto;*/
+  /*overflow: hidden;*/
+  /*padding-right: 1em;*/
+/*}*/
+
+
+@media (min-width: 768px) {
+  #state-list-container {
+    display: block;
+  }
 }

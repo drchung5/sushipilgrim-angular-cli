@@ -1,7 +1,12 @@
 /* Master Styles */
-h1 {
-  font-size: 250%;
+.main-header {
+
 }
+
+.sub-header {
+  visibility: hidden;
+}
+
 h2, h3 {
   font-weight: lighter;
 }
@@ -17,29 +22,29 @@ body > footer {
 
 .header-image {
   float: right;
-  width: 75px;
+  width: 1.7em;
+
 }
 
 header {
-  min-width: 750px;
+  /*min-width: 750px;*/
 }
 
 header>main {
   float: left;
+  position: relative;
 }
 
 header>main>h1 {
-  font-size: 2.8em;
+  font-size: 1.5em;
   font-weight: 900;
   text-shadow: 0.07em 0.07em #aaaaaa;
-  margin-bottom: .15em;
 }
 
 header>main>h2 {
-  font-size: 1.2em;
-  font-weight: 700;
-  text-shadow: 0.07em 0.07em #aaaaaa;
+  display: none;
 }
+
 
 .bar {
   clear: both;
@@ -49,3 +54,54 @@ header>main>h2 {
   margin-bottom: 0.2em;
 }
 
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+  h1 {
+    font-size: 250%;
+  }
+  h2, h3 {
+    font-weight: lighter;
+  }
+
+  body {
+    padding: 1em;
+  }
+
+  body > footer {
+    font-size: .6em;
+    text-align: center;
+  }
+
+  .header-image {
+    float: right;
+    width: 75px;
+  }
+
+  header {
+    min-width: 750px;
+  }
+
+  header>main {
+    float: left;
+  }
+
+  header>main>h1 {
+    font-size: 2.8em;
+    font-weight: 900;
+    text-shadow: 0.07em 0.07em #aaaaaa;
+    margin-bottom: .15em;
+  }
+
+  header>main>h2 {
+      font-size: 1.2em;
+      font-weight: 700;
+      text-shadow: 0.07em 0.07em #aaaaaa;
+      display: inline-block;
+  }
+
+
+}
