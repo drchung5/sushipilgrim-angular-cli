@@ -33,9 +33,9 @@
 
   <!--Only display footer if review is expanded-->
   <footer class="clear" *ngIf="expanded || !enableAccordian">
-    {{review.name}} &mdash; {{review.rating}} rice bowl<span *ngIf="review.rating > 1">s</span>
+    {{review.name}}<span class="rice-bowl-detail"> &mdash; {{review.rating}} rice bowl<span *ngIf="review.rating > 1">s</span></span>
       <div class="rice-bowls">
-        <img *ngFor="let bowl of riceBowls; let i = index" [src]="bowl?colorBowl:greyBowl"/>
+        <img *ngFor="let bowl of riceBowls; let i = index" class="rice-bowl" [src]="bowl?colorBowl:greyBowl"/>
       </div>
   </footer>
 

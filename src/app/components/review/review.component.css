@@ -8,6 +8,7 @@ section p:first-child {
 
 .continue {
   color: red;
+  font-size: smaller;
   cursor: pointer;
 }
 
@@ -53,6 +54,15 @@ footer {
   overflow: hidden;
 }
 
+.rice-bowl {
+  width: 25px;
+  padding-bottom: .3em;
+}
+
+.rice-bowl-detail {
+  display: none;
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -64,4 +74,12 @@ footer {
     overflow: hidden;
   }
 
+  .rice-bowl-detail {
+    display: inline-block;
+  }
+
+  .rice-bowl {
+    width: 30px;
+    padding-bottom: .1em;
+  }
 }
