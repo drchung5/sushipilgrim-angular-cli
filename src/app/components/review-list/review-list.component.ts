@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import {ActivatedRoute, Router, UrlSegment}    from '@angular/router'
+import {ActivatedRoute, Router }    from '@angular/router'
 
 import { Review } from "../../value-objects/review/review.value-object";
 
@@ -20,7 +20,7 @@ import { MobileDetectionService } from '../../services/mobile-detection/mobile-d
 
   styleUrls: ['./review-list.component.css'],
 
-  providers: [ ReviewDataService ]
+  providers: [ StateSelectionService, ReviewDataService ]
 
 })
 
@@ -39,12 +39,6 @@ export class ReviewListComponent {
 
   isMobile:       boolean
   showMobileMenu: boolean = false
-
-  // TODO this is a hack trying to use currentPage in the template seems to treat the value as a string!!!
-  // getNextPage(): number {
-  //   console.log(typeof this.currentPage)
-  //   return 3+1
-  // }
 
   constructor(
     private reviewDataService: ReviewDataService,

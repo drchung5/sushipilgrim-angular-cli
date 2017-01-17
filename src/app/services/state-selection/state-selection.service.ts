@@ -8,12 +8,12 @@ import { Subject }    from 'rxjs/Subject'
 @Injectable()
 export class StateSelectionService {
 
-  private selected = new Subject<string>();
+  private selected = new Subject<string>()
 
-  selected$ = this.selected.asObservable();
+  selected$ = this.selected.asObservable()
 
   setState( selected: string ) : void {
-    this.selected.next( selected );
+    this.selected.next( selected )
   }
 
 }

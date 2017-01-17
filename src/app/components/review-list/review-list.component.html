@@ -11,7 +11,7 @@
 
 <state-list *ngIf="isMobile && showMobileMenu"></state-list>
 
-<footer *ngIf="currentPage != 0 || hasMorePages">
+<footer *ngIf="!showMobileMenu && (currentPage != 0 || hasMorePages)">
   <nav *ngIf="currentPage != 0" class="prev">
     <a href="#" [routerLink]="['/'+selectedState]" [queryParams]={page:currentPage-1}>&laquo; Prev Page</a>
   </nav>

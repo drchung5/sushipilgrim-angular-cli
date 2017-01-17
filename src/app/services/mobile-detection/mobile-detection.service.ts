@@ -8,12 +8,16 @@ import { Subject }    from 'rxjs/Subject'
 @Injectable()
 export class MobileDetectionService {
 
-  private isMobile = new Subject<boolean>();
+  constructor() {
+    console.log('MobileDetectionService: constructor')
+  }
 
-  isMobile$ = this.isMobile.asObservable();
+  private isMobile = new Subject<boolean>()
+
+  isMobile$ = this.isMobile.asObservable()
 
   setMobile( isMobile: boolean ) : void {
-    this.isMobile.next( isMobile );
+    this.isMobile.next( isMobile )
   }
 
 }

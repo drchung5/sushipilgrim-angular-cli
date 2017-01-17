@@ -4,11 +4,13 @@ import { HttpModule }    from '@angular/http'
 
 import { SushipilgrimRouterModule } from './app.routes'
 
-import { PageMainComponent } from './pages/main/main-page.component'
+import { MainPageComponent } from './pages/main/main-page.component'
 import { StateListComponent } from './components/state-list/state-list.component'
 import { ReviewComponent } from './components/review/review.component'
 import { ReviewListComponent } from './components/review-list/review-list.component'
+
 import { ReviewDataService } from './services/review-data/review-data.service'
+import { MobileDetectionService } from './services/mobile-detection/mobile-detection.service'
 
 @NgModule({
   imports:      [
@@ -18,15 +20,15 @@ import { ReviewDataService } from './services/review-data/review-data.service'
   ],
 
   declarations: [
-    PageMainComponent,
+    MainPageComponent,
     StateListComponent,
     ReviewComponent,
     ReviewListComponent
   ],
 
-  providers:    [ ReviewDataService ],
+  providers:    [ ReviewDataService, MobileDetectionService ],
 
-  bootstrap:    [ PageMainComponent ]
+  bootstrap:    [ MainPageComponent ]
 })
 
 export class AppModule { }

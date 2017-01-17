@@ -17,7 +17,7 @@ class StateInfo {
 
   styleUrls: ['./state-list.component.css'],
 
-  providers: [ReviewDataService]
+  providers: [StateSelectionService, ReviewDataService]
 
 })
 
@@ -29,12 +29,12 @@ export class StateListComponent implements OnInit {
 
   constructor(
     private reviewDataService: ReviewDataService,
-    private selectionService: StateSelectionService,
+    private stateSelectionService: StateSelectionService,
     private router: Router ) {
 
     // selected$ is an Observable so the subscribe
     // function watches for changes
-    selectionService.selected$.subscribe(
+    stateSelectionService.selected$.subscribe(
       state => {
         this.selectedState = state
       }
