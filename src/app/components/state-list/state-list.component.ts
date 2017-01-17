@@ -2,7 +2,7 @@ import { Component, OnInit, Input }  from '@angular/core'
 import { Router } from '@angular/router'
 
 import { ReviewDataService } from '../../services/review-data/review-data.service'
-import { StateSelectionService } from "../../services/selection/state-selection.service";
+import { StateSelectionService } from "../../services/state-selection/state-selection.service";
 
 class StateInfo {
   constructor( public name: string, public abbr: string, public hasReviews: boolean ) {}

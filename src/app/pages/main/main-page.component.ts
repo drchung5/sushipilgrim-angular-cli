@@ -1,7 +1,6 @@
-import { Component } from '@angular/core'
-import { ActivatedRoute }    from '@angular/router'
+import { Component, OnInit } from '@angular/core'
 
-import { StateSelectionService }  from '../../services/selection/state-selection.service'
+import { MobileDetectionService } from '../../services/mobile-detection/mobile-detection.service'
 
 @Component({
 
@@ -13,7 +12,7 @@ import { StateSelectionService }  from '../../services/selection/state-selection
 
   styleUrls: ['./main-page.component.css'],
 
-  providers: [ StateSelectionService ]
+  providers: [ MobileDetectionService ]
 
 })
 
@@ -22,8 +21,21 @@ export class PageMainComponent {
   // TODO: define 'ALL' as a constant
   // selectedReviews: string = 'ALL'
 
-  constructor(
-    private selectionService: StateSelectionService) {}
+  isMobile: boolean
 
+  constructor(
+    private mobileDetectionService: MobileDetectionService) {}
+
+  ngOnInit() {
+
+    // isMobile$ is an Observable so the subscribe
+    // function watches for changes
+    this.mobileDetectionService.isMobile$.subscribe(
+      isMobile => {
+        this.isMobile = isMobile
+      }
+    )
+
+  }
 
 }

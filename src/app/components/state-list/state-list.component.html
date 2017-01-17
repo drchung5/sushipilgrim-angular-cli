@@ -4,7 +4,7 @@
 
     <li *ngIf="state.hasReviews">
       <div class="selected">{{selectedState===state.abbr?'•':''}}</div>
-      <a class="link" href="#" [routerLink]="[state.abbr]" [queryParams]="{page: 0}">{{state.name}}</a>
+      <a class="link" href="#" [routerLink]="['/'+state.abbr]" [queryParams]="{page: 0}">{{state.name}}</a>
     </li>
 
     <li *ngIf="!state.hasReviews">

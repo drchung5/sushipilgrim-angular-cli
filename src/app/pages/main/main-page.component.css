@@ -2,9 +2,6 @@ header {
   margin-bottom: 0.5em;
 }
 
-#state-list-container {
-  display: none;
-}
 
 /*section {*/
   /*width: auto;*/
@@ -12,9 +9,18 @@ header {
   /*padding-right: 1em;*/
 /*}*/
 
+aside {
+  margin-left: .7em;
+  float: right;
+  width: 150px;
+}
+
+section {
+  width: auto;
+  overflow: hidden;
+}
+
 
 @media (min-width: 768px) {
-  #state-list-container {
-    display: block;
-  }
+
 }

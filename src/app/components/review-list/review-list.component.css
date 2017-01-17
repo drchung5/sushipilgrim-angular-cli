@@ -76,5 +76,8 @@ footer {
     display: none;
   }
 
+  state-list {
+    display: none;
+  }
 
 }

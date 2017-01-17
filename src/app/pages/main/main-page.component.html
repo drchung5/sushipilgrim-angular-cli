@@ -1,21 +1,8 @@
-<div class="row">
+<aside id="state-list-container" *ngIf="!isMobile">
+  <header>Reviews</header>
+  <state-list></state-list>
+</aside>
 
-  <div class="col-md-10">
-    <router-outlet></router-outlet>
-  </div>
-
-  <div id="state-list-container" class="col-md-2">
-    <header>Reviews</header>
-    <state-list></state-list>
-  </div>
-
-</div>
-
-<!--<aside>-->
-  <!--<header>Reviews</header>-->
-  <!--<state-list></state-list>-->
-<!--</aside>-->
-
-<!--<section>-->
-  <!--<router-outlet></router-outlet>-->
-<!--</section>-->
+<section>
+  <router-outlet></router-outlet>
+</section>

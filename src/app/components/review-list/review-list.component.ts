@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core'
 import {ActivatedRoute, Router, UrlSegment}    from '@angular/router'
 
 import { Review } from "../../value-objects/review/review.value-object";
-import { ReviewData } from "../../value-objects/review-data/review-data.value-object";
 
 import { ReviewDataService } from '../../services/review-data/review-data.service'
-import { StateSelectionService }  from '../../services/selection/state-selection.service'
+import { StateSelectionService }  from '../../services/state-selection/state-selection.service'
+import { MobileDetectionService } from '../../services/mobile-detection/mobile-detection.service'
 
 // This component is just a container for reviews
 // and will be used as the target component for
@@ -26,7 +26,8 @@ import { StateSelectionService }  from '../../services/selection/state-selection
 
 export class ReviewListComponent {
 
-  REVIEWS_PER_PAGE: number = 5
+  MOBLIE_BREAKPOINT: number = 768
+  REVIEWS_PER_PAGE:  number = 5
 
   selectedState: string
 
@@ -36,17 +37,24 @@ export class ReviewListComponent {
   enableAccordian: boolean = true
   path: Array<string> = [""]
 
+  isMobile:       boolean
+  showMobileMenu: boolean = false
+
   // TODO this is a hack trying to use currentPage in the template seems to treat the value as a string!!!
-  getNextPage(): number {
-    console.log(typeof this.currentPage)
-    return 3+1
-  }
+  // getNextPage(): number {
+  //   console.log(typeof this.currentPage)
+  //   return 3+1
+  // }
 
   constructor(
     private reviewDataService: ReviewDataService,
-    private selectionService: StateSelectionService,
+    private stateSelectionService: StateSelectionService,
+    private mobileDetectionService: MobileDetectionService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {}
+    private router: Router) {
+
+    this.isMobile = window.innerWidth < this.MOBLIE_BREAKPOINT
+  }
 
   ngOnInit() {
 
@@ -59,7 +67,9 @@ export class ReviewListComponent {
       if ( this.selectedState === undefined ) {
         this.selectedState = 'ALL'
       }
-      this.selectionService.setState(this.selectedState)
+
+      this.stateSelectionService.setState(this.selectedState)
+      this.mobileDetectionService.setMobile(this.isMobile)
 
       this.doNav()
 
@@ -82,6 +92,8 @@ export class ReviewListComponent {
   }
 
   doNav( page: number = 0, count: number = this.REVIEWS_PER_PAGE ) {
+
+    this.showMobileMenu = false
 
     this.reviewDataService.getReviews(this.selectedState, page, count).then(
       data => {
@@ -146,7 +158,19 @@ export class ReviewListComponent {
   }
 
   onHamburger() {
-    console.log('hamburger')
+    this.showMobileMenu = !this.showMobileMenu
+  }
+
+  onResize(event) {
+
+    this.isMobile = event.target.innerWidth < this.MOBLIE_BREAKPOINT
+
+    this.mobileDetectionService.setMobile(this.isMobile)
+
+    if( !this.isMobile ) {
+      this.showMobileMenu = false
+    }
+
   }
 
 }
