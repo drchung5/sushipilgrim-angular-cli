@@ -10,7 +10,9 @@ import { ReviewComponent } from './components/review/review.component'
 import { ReviewListComponent } from './components/review-list/review-list.component'
 
 import { ReviewDataService } from './services/review-data/review-data.service'
+import { StateSelectionService } from './services/state-selection/state-selection.service'
 import { MobileDetectionService } from './services/mobile-detection/mobile-detection.service'
+
 
 @NgModule({
   imports:      [
@@ -26,7 +28,7 @@ import { MobileDetectionService } from './services/mobile-detection/mobile-detec
     ReviewListComponent
   ],
 
-  providers:    [ ReviewDataService, MobileDetectionService ],
+  providers:    [ ReviewDataService, MobileDetectionService, StateSelectionService ],
 
   bootstrap:    [ MainPageComponent ]
 })

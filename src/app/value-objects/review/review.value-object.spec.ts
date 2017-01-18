@@ -7,8 +7,6 @@ describe( 'Review Data Service', () => {
 
     let date: Date = new Date();
 
-    console.log(`spec: ${date.toISOString()}`)
-
     let o = {
       id: 1234,
       reviewDate: date.toISOString(),

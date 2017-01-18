@@ -10,6 +10,11 @@ section p:first-child {
   color: red;
   font-size: smaller;
   cursor: pointer;
+  float: right;
+  border: black 1px solid;
+  border-radius: .75em;
+  margin-bottom: .5em;
+  padding: .2em .4em;
 }
 
 .continue:hover {
@@ -17,7 +22,11 @@ section p:first-child {
 }
 
 .continue > span {
-  float: right;
+  /*float: right;*/
+}
+
+.sushi-hidden {
+  display: none;
 }
 
 footer {
@@ -63,6 +72,7 @@ footer {
   display: none;
 }
 
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -81,5 +91,15 @@ footer {
   .rice-bowl {
     width: 30px;
     padding-bottom: .1em;
+  }
+
+  .sushi-hidden {
+    display: inline-block;
+  }
+
+  .continue {
+    border: none;
+    margin-bottom: 0px;
+    padding: 0px;
   }
 }

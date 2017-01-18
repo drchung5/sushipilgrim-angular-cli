@@ -20,7 +20,7 @@ import { MobileDetectionService } from '../../services/mobile-detection/mobile-d
 
   styleUrls: ['./review-list.component.css'],
 
-  providers: [ StateSelectionService, ReviewDataService ]
+  providers: [ ReviewDataService ]
 
 })
 
@@ -55,14 +55,12 @@ export class ReviewListComponent {
     // since ngOnInit is only called once, subscribe to changes in the URL parameter
     this.activatedRoute.params.subscribe(params=>{
 
-      console.log(`params - state: ${params['state']}`)
-
       this.selectedState = params['state']
       if ( this.selectedState === undefined ) {
         this.selectedState = 'ALL'
       }
 
-      this.stateSelectionService.setState(this.selectedState)
+      // this.stateSelectionService.setState(this.selectedState)
       this.mobileDetectionService.setMobile(this.isMobile)
 
       this.doNav()
@@ -70,8 +68,6 @@ export class ReviewListComponent {
     })
 
     this.activatedRoute.queryParams.subscribe(queryParams=>{
-
-      console.log(`queryParams - page: ${queryParams['page']}  count: ${queryParams['count']}`)
 
       let page = queryParams['page'] || 0
       let count = queryParams['count']
@@ -88,6 +84,8 @@ export class ReviewListComponent {
   doNav( page: number = 0, count: number = this.REVIEWS_PER_PAGE ) {
 
     this.showMobileMenu = false
+
+    this.stateSelectionService.setState(this.selectedState)
 
     this.reviewDataService.getReviews(this.selectedState, page, count).then(
       data => {

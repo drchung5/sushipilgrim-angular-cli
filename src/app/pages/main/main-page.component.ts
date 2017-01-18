@@ -25,7 +25,6 @@ export class MainPageComponent {
 
   constructor( private mobileDetectionService: MobileDetectionService) {
 
-    console.log('PageMainCompenent:constructor')
     // isMobile$ is an Observable so the subscribe
     // function watches for changes
     this.mobileDetectionService.isMobile$.subscribe(

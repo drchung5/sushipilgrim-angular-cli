@@ -19,13 +19,13 @@
 
       <template [ngIf]="i === 0 && !expanded && enableAccordian">
         <div class="continue" (click)="more()">
-          <span>{{review.name}} full review &raquo;</span>
+          <span class="sushi-hidden">{{review.name}}&nbsp;</span><span>Full Review &raquo;</span>
         </div>
         <hr class="clear">
       </template>
 
       <div *ngIf="i === (review.text.length-1) && expanded && enableAccordian" class="continue" (click)="more()">
-        <span>&laquo; Minimize the review</span>
+        <span>&laquo; Minimize Review</span>
       </div>
 
     </template>

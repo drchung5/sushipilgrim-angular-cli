@@ -17,7 +17,7 @@ class StateInfo {
 
   styleUrls: ['./state-list.component.css'],
 
-  providers: [StateSelectionService, ReviewDataService]
+  providers: [ ReviewDataService ]
 
 })
 
@@ -42,8 +42,6 @@ export class StateListComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log(`State: ${this.selectedState}`)
 
     this.reviewDataService.getStatesWithReviews().then(
       statesWithReviews => {

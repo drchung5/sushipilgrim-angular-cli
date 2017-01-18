@@ -4,7 +4,6 @@ import { Router } from '@angular/router'
 import { Review }            from '../../value-objects/review/review.value-object'
 import { ReviewDataService } from '../../services/review-data/review-data.service'
 
-
 // This component displays a Review. It handles both the
 // minimized and expanded (accordian) format of the review
 @Component({

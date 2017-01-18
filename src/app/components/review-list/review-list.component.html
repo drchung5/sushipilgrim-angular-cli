@@ -5,11 +5,13 @@
   <img id="hamburger" (click)="onHamburger()" src="../../../images/hamburger.png"/>
 </header>
 
-<template [ngIf]="!isMobile || !showMobileMenu">
-  <review *ngFor="let review of reviews" [review]="review" [enableAccordian]="enableAccordian"></review>
-</template>
+<review
+      [hidden]="isMobile && showMobileMenu"
+      *ngFor="let review of reviews"
+      [review]="review"
+      [enableAccordian]="enableAccordian"></review>
 
-<state-list *ngIf="isMobile && showMobileMenu"></state-list>
+<state-list [hidden]="!isMobile || !showMobileMenu"></state-list>
 
 <footer *ngIf="!showMobileMenu && (currentPage != 0 || hasMorePages)">
   <nav *ngIf="currentPage != 0" class="prev">

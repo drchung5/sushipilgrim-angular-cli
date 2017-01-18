@@ -1,4 +1,4 @@
-<aside id="state-list-container" *ngIf="!isMobile">
+<aside id="state-list-container" [hidden]="isMobile">
   <header>Reviews</header>
   <state-list></state-list>
 </aside>

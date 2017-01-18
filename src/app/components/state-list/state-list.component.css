@@ -8,9 +8,14 @@ nav {
 ul {
   margin:0;
 }
+
 li {
   list-style: none;
+  border: black 1px solid;
+  padding: .5em 0 .5em 0.5em;
 }
+
+
 .selected {
   display: inline-block;
   width: 0.9em;
@@ -28,4 +33,13 @@ li {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+
+  li {
+    border: none;
+    padding: 0;
+  }
+
 }
