@@ -40,6 +40,9 @@ export class ReviewComponent implements OnInit {
                private router: Router ) {}
 
   ngOnInit() {
+
+    console.log(`ReviewComponent: ngOnInit(${this.review.name})`)
+
     // configure the ricebowl array for the rating
     for( let i = 0; i < 5; i++ ) {
       this.riceBowls.push(i>=(Review.MAX_RATING-this.review.rating)?true:false)

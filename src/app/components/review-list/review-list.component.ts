@@ -52,6 +52,8 @@ export class ReviewListComponent {
 
   ngOnInit() {
 
+    console.log("ReviewListComponent: ngOnInit()")
+
     // since ngOnInit is only called once, subscribe to changes in the URL parameter
     this.activatedRoute.params.subscribe(params=>{
 
